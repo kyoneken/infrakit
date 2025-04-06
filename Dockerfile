@@ -26,12 +26,15 @@ RUN pip install --no-cache-dir ansible ansible-core && \
     # よく使われる Ansible コレクションをインストール
     ansible-galaxy collection install community.general && \
     ansible-galaxy collection install ansible.posix
+    
+# dotenvx のインストール
+RUN curl -fsS https://dotenvx.sh/ | sh
 
 # 作業ディレクトリの設定
 WORKDIR /workspace
 
-# Terraform と Ansible のバージョン確認用のコマンド
-RUN terraform version && ansible --version
+# インストールされたツールのバージョン確認
+RUN terraform version && ansible --version && dotenvx --version
 
 # イメージメタデータ
 LABEL org.opencontainers.image.title="Terraform and Ansible Container"

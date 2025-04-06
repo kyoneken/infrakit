@@ -1,4 +1,3 @@
-# infrakit
 # Terraform & Ansible Docker イメージ
 
 [![Build and Push Multi-Architecture Docker Image](https://github.com/OWNER/REPO/actions/workflows/docker-build.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/docker-build.yml)
@@ -9,6 +8,7 @@
 
 - Terraform: インフラストラクチャのプロビジョニングとコード化
 - Ansible: 構成管理と自動化
+- dotenvx: 環境変数管理ツール
 - その他の基本ツール: Git, SSH, etc.
 
 ## 使用方法
@@ -40,6 +40,16 @@ docker run -it --rm \
   -v ~/.ssh:/root/.ssh \
   ghcr.io/OWNER/terraform-ansible:latest \
   ansible-playbook playbook.yml
+```
+
+### dotenvx の使用例
+
+```bash
+# 環境変数ファイルを使用する
+docker run -it --rm \
+  -v $(pwd):/workspace \
+  ghcr.io/OWNER/terraform-ansible:latest \
+  dotenvx load -f .env -- terraform apply
 ```
 
 ## カスタムビルド
