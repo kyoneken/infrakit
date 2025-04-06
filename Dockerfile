@@ -15,7 +15,7 @@ RUN apk add --no-cache \
     openssl-dev
 
 # Terraform のインストール
-ENV TERRAFORM_VERSION=1.5.7
+ENV TERRAFORM_VERSION=1.11.3
 RUN curl -LO "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo "amd64").zip" && \
     unzip "terraform_${TERRAFORM_VERSION}_linux_$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo "amd64").zip" && \
     mv terraform /usr/local/bin/ && \

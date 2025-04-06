@@ -1,6 +1,6 @@
 # Terraform & Ansible Docker イメージ
 
-[![Build and Push Multi-Architecture Docker Image](https://github.com/OWNER/REPO/actions/workflows/docker-build.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/docker-build.yml)
+[![Build and Push Multi-Architecture Docker Image](https://github.com/kyoneken/infrakit/actions/workflows/docker-build.yml/badge.svg)](https://github.com/kyoneken/infrakit/actions/workflows/docker-build.yml)
 
 インフラストラクチャ自動化のための軽量な Terraform と Ansible を含む Docker イメージです。ARM64 と AMD64（Intel/x86_64）の両方のアーキテクチャをサポートしています。
 
@@ -17,18 +17,18 @@
 
 ```bash
 # Pull the image
-docker pull ghcr.io/OWNER/terraform-ansible:latest
+docker pull ghcr.io/kyoneken/terraform-ansible:latest
 
 # Run with your current directory mounted
-docker run -it --rm -v $(pwd):/workspace ghcr.io/OWNER/terraform-ansible:latest
+docker run -it --rm -v $(pwd):/workspace ghcr.io/kyoneken/terraform-ansible:latest
 ```
 
 ### Terraform の使用例
 
 ```bash
-docker run -it --rm -v $(pwd):/workspace ghcr.io/OWNER/terraform-ansible:latest terraform init
-docker run -it --rm -v $(pwd):/workspace ghcr.io/OWNER/terraform-ansible:latest terraform plan
-docker run -it --rm -v $(pwd):/workspace ghcr.io/OWNER/terraform-ansible:latest terraform apply
+docker run -it --rm -v $(pwd):/workspace ghcr.io/kyoneken/terraform-ansible:latest terraform init
+docker run -it --rm -v $(pwd):/workspace ghcr.io/kyoneken/terraform-ansible:latest terraform plan
+docker run -it --rm -v $(pwd):/workspace ghcr.io/kyoneken/terraform-ansible:latest terraform apply
 ```
 
 ### Ansible の使用例
@@ -38,7 +38,7 @@ docker run -it --rm -v $(pwd):/workspace ghcr.io/OWNER/terraform-ansible:latest 
 docker run -it --rm \
   -v $(pwd):/workspace \
   -v ~/.ssh:/root/.ssh \
-  ghcr.io/OWNER/terraform-ansible:latest \
+  ghcr.io/kyoneken/terraform-ansible:latest \
   ansible-playbook playbook.yml
 ```
 
@@ -48,15 +48,15 @@ docker run -it --rm \
 # 環境変数ファイルを使用する
 docker run -it --rm \
   -v $(pwd):/workspace \
-  ghcr.io/OWNER/terraform-ansible:latest \
+  ghcr.io/kyoneken/terraform-ansible:latest \
   dotenvx load -f .env -- terraform apply
 ```
 
 ## カスタムビルド
 
 ```bash
-git clone https://github.com/OWNER/REPO.git
-cd REPO
+git clone https://github.com/kyoneken/infrakit.git
+cd infrakit
 docker build -t terraform-ansible:custom .
 ```
 
